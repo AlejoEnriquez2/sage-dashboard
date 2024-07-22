@@ -1,0 +1,24 @@
+<div class="dashboard-container">
+    <h2>User Answers</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Patient</th>
+          <th>Total Time</th>
+          <th>Grade</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of test" [routerLink]="['/user-answers', item.testId]" class="clickable-row">
+          <td>{{ item.testId }}</td>
+          <td>{{ item.patientName }}</td>
+          <td>{{ item.testTotalTime }}</td>
+          <td>{{ item.answers.grade }}</td>
+          <td>{{ item.createAt }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

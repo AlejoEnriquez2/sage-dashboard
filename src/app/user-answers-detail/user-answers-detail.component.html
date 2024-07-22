@@ -1,0 +1,211 @@
+<div class="container">
+  <h1>Self Administered Gerocognitive Examination (SAGE) - Form 1</h1>        
+  <hr>
+
+  <div class="section">
+    <div class="row">
+      <div class="column">
+        <div class="box">
+          <h2><strong>ID:</strong> {{ testId }}</h2>
+        </div>
+      </div>
+      <div class="column">
+        <div class="box">
+          <h2><strong>Grade:</strong> {{ answersGrade }}/22</h2>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h2>User Information</h2>
+    <p>
+      Name &nbsp; <u> &nbsp;&nbsp;&nbsp;&nbsp; {{ test.patientName }} &nbsp;&nbsp;&nbsp;&nbsp; </u> &nbsp;
+      Date of Birth &nbsp; <u> &nbsp;&nbsp;&nbsp;&nbsp; {{ test.patientBirthday }} &nbsp;&nbsp;&nbsp;&nbsp; </u>&nbsp;
+      How far did you get in school? &nbsp;<u> &nbsp;&nbsp;&nbsp;&nbsp; {{test.patientEducation}} &nbsp;&nbsp;&nbsp;&nbsp; </u>&nbsp;
+      I am a &nbsp;<u> &nbsp;&nbsp;&nbsp;&nbsp; {{test.patientGender}} &nbsp;&nbsp;&nbsp;&nbsp; </u>&nbsp;
+      My ethnical background is &nbsp;<u> &nbsp;&nbsp;&nbsp;&nbsp; {{test.patientRace}} &nbsp;&nbsp;&nbsp;&nbsp; </u>&nbsp;
+      Have you had any problems with memory or thinking? &nbsp;<u> &nbsp;&nbsp;&nbsp;&nbsp; {{test.patientMemory}} &nbsp;&nbsp;&nbsp;&nbsp; </u>&nbsp;
+      Have you had any blood relatives that have had problems with memory or thinking? &nbsp;<u> &nbsp;&nbsp;&nbsp;&nbsp; {{test.patientRelatives}} &nbsp;&nbsp;&nbsp;&nbsp; </u>&nbsp;
+      Do you have balance problems? &nbsp;<u> &nbsp;&nbsp;&nbsp;&nbsp; {{test.patientBalance}} &nbsp;&nbsp;&nbsp;&nbsp; </u>&nbsp;
+      Have you ever had a major stroke? &nbsp;<u> &nbsp;&nbsp;&nbsp;&nbsp; {{test.patientMajorStroke}} &nbsp;&nbsp;&nbsp;&nbsp; </u>&nbsp;
+      A minor or mini-stroke? &nbsp;<u> &nbsp;&nbsp;&nbsp;&nbsp; {{test.patientMinorStroke}} &nbsp;&nbsp;&nbsp;&nbsp; </u>&nbsp;
+      Do you currently feel sad or depressed? &nbsp;<u> &nbsp;&nbsp;&nbsp;&nbsp; {{test.patientDepression}} &nbsp;&nbsp;&nbsp;&nbsp; </u>&nbsp;
+      Have you had any change in your personality? &nbsp;<u> &nbsp;&nbsp;&nbsp;&nbsp; {{test.patientPersonality}} &nbsp;&nbsp;&nbsp;&nbsp; </u>&nbsp;
+      Do you have more difficulties doing everyday activities due to thinking problems? &nbsp;<u> &nbsp;&nbsp;&nbsp;&nbsp; {{test.patientDifficulties}} &nbsp;&nbsp;&nbsp;&nbsp; </u>&nbsp;
+    </p>
+    <p><strong>Username:</strong> {{ test.patient?.email }}</p>
+    <p><strong>Status:</strong> {{ test.patient?.status }}</p>
+  </div>
+  
+  <hr>
+
+  <div class="section">
+      <h2>Orientation - <strong>{{orientationGrade}}</strong>/4</h2>
+      <div class="row">
+        <div class="column">
+          <p><strong>Orientation Month:</strong> {{ orientationMonth[0] }}
+              <span class="emoji" *ngIf="orientationMonth[1] === 'correct'">✅</span>
+              <span class="emoji" *ngIf="orientationMonth[1] !== 'correct'">❌</span>
+          </p>
+          <button (click)="updateOrientation(1, true)">Correct ✅</button>        
+          <button (click)="updateOrientation(1, false)">Incorrect ❌</button>   
+      </div>
+      <div class="column">
+          <p><strong>Orientation Day:</strong> {{ orientationDay[0] }}
+              <span class="emoji" *ngIf="orientationDay[1] === 'correct'">✅</span>
+              <span class="emoji" *ngIf="orientationDay[1] !== 'correct'">❌</span>
+          </p>
+          <button (click)="updateOrientation(2, true)">Correct ✅</button>        
+          <button (click)="updateOrientation(2, false)">Incorrect ❌</button>   
+      </div>
+      <div class="column">
+          <p><strong>Orientation Year:</strong> {{ orientationYear[0] }}
+              <span class="emoji" *ngIf="orientationYear[1] === 'correct'">✅</span>
+              <span class="emoji" *ngIf="orientationYear[1] !== 'correct'">❌</span>
+          </p>
+          <button (click)="updateOrientation(3, true)">Correct ✅</button>        
+          <button (click)="updateOrientation(3, false)">Incorrect ❌</button>   
+      </div>
+      </div>
+  </div>
+  
+  <hr>
+
+  <div class="section">
+      <h2>Naming - <strong>{{namingGrade}}</strong>/2</h2>
+      <p><strong>Name of the Picture 1:</strong> {{ naming1[0] }}
+        <span class="emoji" *ngIf="naming1[1] === 'correct'">✅ </span>
+        <span class="emoji" *ngIf="naming1[1] !== 'correct'">❌ </span>
+        <button (click)="updateNaming(1, true)">Correct ✅</button>        
+        <button (click)="updateNaming(1, false)">Incorrect ❌</button>   
+      </p>
+
+      <p><strong>Name of the Picture 2:</strong> {{ naming2[0] }}
+        <span class="emoji" *ngIf="naming2[1] === 'correct'">✅ </span>
+        <span class="emoji" *ngIf="naming2[1] !== 'correct'">❌ </span>        
+        <button (click)="updateNaming(2, true)">Correct ✅</button> 
+        <button (click)="updateNaming(2, false)">Incorrect ❌</button>   
+      </p>
+  </div>
+  
+  <hr>
+
+  <div class="section">
+      <h2>Similarities - <strong>{{similaritiesGrade}}</strong>/2</h2>
+      <p><strong>Similarities:</strong> {{ similarities[0] }}
+        <span class="emoji" *ngIf="similarities[1] === 'correct'">✅</span>
+        <span class="emoji" *ngIf="similarities[1] === 'half-correct'">➖</span>
+        <span class="emoji" *ngIf="similarities[1] === 'incorrect'">❌</span>
+        <button (click)="updateSimilarities(1)">Correct ✅</button>
+        <button (click)="updateSimilarities(2)">Concrete ➖</button>
+        <button (click)="updateSimilarities(3)">Incorrect ❌</button>  
+      </p>
+
+  </div>
+  
+  <hr>
+
+  <div class="section">
+      <h2>Calculations - <strong>{{ calculationGrade }}</strong>/2</h2>
+      <p><strong>Calculation 1:</strong> {{ calculation1[0] }}
+        <span class="emoji" *ngIf="calculation1[1] === 'correct'">✅</span>
+        <span class="emoji" *ngIf="calculation1[1] !== 'correct'">❌</span>
+        <button (click)="updateCalculations(1, true)">Correct ✅</button> 
+        <button (click)="updateCalculations(1, false)">Incorrect ❌</button> 
+      </p>
+      <p><strong>Calculation 2:</strong> {{ calculation2[0] }}
+        <span class="emoji" *ngIf="calculation2[1] === 'correct'">✅</span>
+        <span class="emoji" *ngIf="calculation2[1] !== 'correct'">❌</span>
+        <button (click)="updateCalculations(2, true)">Correct ✅</button> 
+        <button (click)="updateCalculations(2, false)">Incorrect ❌</button> 
+      </p>
+  </div>
+  
+  <hr>
+
+  <div class="section">
+      <h2>Constructions - <strong> {{constructionGrade}} </strong>/4</h2>
+      <p>
+        <strong>Constructions Draw: {{drawGrade}} </strong> 
+        <button (click)="updateConstructionsDraw(1)">Correct ✅</button>
+        <button (click)="updateConstructionsDraw(2)">Maybe is correct ➖</button>
+        <button (click)="updateConstructionsDraw(3)">Incorrect ❌</button>        
+      </p>
+      <img *ngIf="draw" [src]="'data:image/png;base64,' + draw" alt="Draw Image">
+      <span class="emoji large" *ngIf="drawGrade === 'yes'">✅</span>
+      <span class="emoji large" *ngIf="drawGrade === 'maybe'">➖</span>
+      <span class="emoji large" *ngIf="drawGrade === 'no'">❌</span>
+      <span class="emoji large" *ngIf="drawGrade === 'ungraded'">✏️</span>
+      
+      <p><strong>Constructions Redraw: {{redrawGrade}} </strong> 
+        <button (click)="updateConstructionsRedraw(1)">Correct ✅</button>
+        <button (click)="updateConstructionsRedraw(2)">Maybe is correct ➖</button>
+        <button (click)="updateConstructionsRedraw(3)">Incorrect ❌</button>
+        
+      </p>
+      <img *ngIf="redraw" [src]="'data:image/png;base64,' + redraw" alt="Redraw Image">
+      <span class="emoji large" *ngIf="redrawGrade === 'yes'">✅</span>
+      <span class="emoji large" *ngIf="redrawGrade === 'maybe'">➖</span>
+      <span class="emoji large" *ngIf="redrawGrade === 'no'">❌</span>
+  </div>
+  
+  <hr>
+
+  <div class="section">
+    <h2>Verbal fluency: <strong>{{verbalFluencyGrade}}</strong>/2</h2>        
+    <strong>Verbal Words: </strong>
+    <span class="emoji" *ngIf="verbalGrade === 'correct'">✅ </span>
+    <span class="emoji" *ngIf="verbalGrade === 'half-correct'">➖</span>
+    <span class="emoji" *ngIf="verbalGrade === 'incorrect'">❌ </span>
+    <button (click)="updateVerbal(1)">Correct ✅</button>
+    <button (click)="updateVerbal(2)">Incomplete ➖</button>
+    <button (click)="updateVerbal(3)">Incorrect ❌</button>  
+    <ul>
+      <li *ngFor="let word of verbal">{{ word }}</li>
+    </ul>    
+  </div>
+
+  <hr>
+
+  <div class="section">
+      <h2>Executive - <strong> {{executiveGrade}} </strong>/4</h2>
+      <p><strong>Modified Trails:</strong> {{ trail[0] }}
+        <span class="emoji" *ngIf="trail[1] === 'correct'">✅ </span>
+        <span class="emoji" *ngIf="trail[1] === 'half-correct'">➖ </span>
+        <span class="emoji" *ngIf="trail[1] === 'incorrect'">❌ </span>
+        <button (click)="updateTrail(1)">Correct ✅</button>
+        <button (click)="updateTrail(2)">Incomplete ➖</button>
+        <button (click)="updateTrail(3)">Incorrect ❌</button>  
+      </p>
+      <p><strong>Cross Executive Draw:</strong></p>
+      <p>Correct lines crossed : {{ executiveLines[0] }}
+        <span class="emoji" *ngIf="executiveLines[1] === 'correct'">✅ </span>
+        <span class="emoji" *ngIf="executiveLines[1] !== 'correct'">❌ </span>
+        <button (click)="updateExecutiveLines(true)">Correct ✅</button>
+        <button (click)="updateExecutiveLines(false)">Incorrect ❌</button>  
+      </p>
+      <img *ngIf="crossExecutiveDraw" [src]="'data:image/png;base64,' + crossExecutiveDraw" alt="Trail Draw Image">
+      <p><strong>Executive Draw:</strong>              
+        <span class="emoji" *ngIf="executiveDrawGrade === 'yes'">✅ </span>
+        <span class="emoji" *ngIf="executiveDrawGrade !== 'yes'">❌ </span>
+        <button (click)="updateExecutiveDraw(true)">Correct ✅</button>
+        <button (click)="updateExecutiveDraw(false)">Incorrect ❌</button>  
+      </p>
+
+      <img *ngIf="executiveDraw" [src]="'data:image/png;base64,' + executiveDraw" alt="Executive Draw Image">
+      
+  </div>
+
+  <hr>
+
+  <div class="section">
+      <h2>Memory - <strong>{{memoryGrade}}</strong>/2</h2>
+      <p><strong>Memory Phrase:</strong> {{ memory[0] }}
+        <span class="emoji" *ngIf="memory[1] === 'correct'">✅ </span>
+        <span class="emoji" *ngIf="memory[1] === 'half-correct'">➖ </span>
+        <span class="emoji" *ngIf="memory[1] === 'incorrect'">❌ </span>
+        <button (click)="updateMemory(1)">Correct ✅</button>
+        <button (click)="updateMemory(2)">Incomplete ➖</button>
+        <button (click)="updateMemory(3)">Incorrect ❌</button>  
+      </p>
+  </div>
+</div>
